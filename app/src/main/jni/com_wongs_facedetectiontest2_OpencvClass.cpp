@@ -7,20 +7,19 @@ JNIEXPORT void JNICALL Java_com_wongs_facedetectiontest2_OpencvClass_faceDetecti
     Mat& frame = *(Mat*)addrRgba;
     detect(frame);
 }
-
 void detect(Mat& frame) {
     /** Global variables */
-    String face_cascade_name = "/storage/emulated/0/haarcascade_frontalface_alt.xml";
-    String eyes_cascade_name = "/storage/emulated/0/haarcascade_eye_tree_eyeglasses.xml";
+    String face_cascade_name = "/storage/emulated/0/data/haarcascade_frontalface_default.xml";
+    String eyes_cascade_name = "/storage/emulated/0/data/haarcascade_eye_tree_eyeglasses.xml";
     CascadeClassifier face_cascade;
     CascadeClassifier eyes_cascade;
     //-- 1. Load the cascades
     if (!face_cascade.load(face_cascade_name)) {
-        printf("--(!)Error loading\n");
+        LOGE("--(!)Error haarcascade_frontalface_default load failed!");
         return;
     };
     if (!eyes_cascade.load(eyes_cascade_name)) {
-        printf("--(!)Error loading\n");
+        LOGE("--(!)Error haarcascade_eye_tree_eyeglasses load failed!");
         return;
     };
 
@@ -55,4 +54,5 @@ JNIEXPORT jstring JNICALL Java_com_wongs_facedetectiontest2_OpencvClass_nativesT
         (JNIEnv *env, jclass obj){
     return env->NewStringUTF("this is message from JNI");
 }
+
 
