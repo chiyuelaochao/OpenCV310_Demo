@@ -15,7 +15,6 @@ import org.opencv.core.Mat;
 public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
     public static final String TAG = "MainActivity";
     private JavaCameraView view;
-    // Used to load the 'native-lib' library on application startup.
 
     BaseLoaderCallback callback = new BaseLoaderCallback(this) {
         @Override
@@ -36,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Example of a call to a native method
         view = (JavaCameraView) findViewById(R.id.view);
         view.setVisibility(View.VISIBLE);
         view.setCvCameraViewListener(this);
@@ -83,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
-        mRgba = inputFrame.rgba();//color frame
+        mRgba = inputFrame.rgba();
         OpencvClass.faceDetection(mRgba.getNativeObjAddr());
         return mRgba;
     }
