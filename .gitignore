@@ -36,4 +36,9 @@ captures/
 *.iml  
   
 # Keystore files  
-*.jks</span>  
+*.jks</span>
+.idea/libraries/
+.idea/workspace.xml
+FaceDetectionTest2/
+app/.externalNativeBuild/
+
